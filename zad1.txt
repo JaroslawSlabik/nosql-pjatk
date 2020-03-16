@@ -1,0 +1,245 @@
+
+/*
+Jaroslaw Slabik
+NBD Ćwiczenia 1 – Scala
+*/
+
+/*
+1. Stwórz 7 elementową listę zawierającą nazwy dni tygodnia. Napisz funkcję tworzącą w oparciu 
+o nią stringa z elementami oddzielonymi przecinkami korzystając z:
+    a. Pętli for
+    b. Pętli for wypisując tylko dni z nazwami zaczynającymi się na „P”
+    c. Pętli while
+*/
+
+val listOfDayNames = List("Poniedziałek", "Wtorek", "środa", "Czwartek", "Piątek", "Sobota", "Niedziela")
+
+def zad1a(list:List[String]) : String =
+{
+  var toRet:String = "";
+  
+  for (day <- list)
+    toRet += day + ",";
+  
+  return toRet.dropRight(1);
+}
+
+def zad1b(list:List[String]) : String =
+{
+  var toRet:String = "";
+  
+  for (day <- list)
+    if(day.charAt(0) == 'P')
+      toRet += day + ",";
+  
+  return toRet.dropRight(1);
+}
+
+def zad1c(list:List[String]) : String =
+{
+  var toRet:String = "";
+  var i:Int = 0;
+  
+  while (i < list.length)
+  {
+    toRet += list.apply(i) + ",";
+    i += 1;
+  }
+  
+  return toRet.dropRight(1);
+}
+
+println("zad1a: " + zad1a(listOfDayNames));
+println("zad1b: " + zad1b(listOfDayNames));
+println("zad1c: " + zad1c(listOfDayNames));
+
+/*
+2. Dla listy z ćwiczenia 1 napisz funkcję tworzącą w oparciu o nią 
+stringa z elementami oddzielonymi przecinkami korzystając z:
+    a. Funkcji rekurencyjnej 
+    b. Funkcji rekurencyjnej wypisując elementy listy od końca
+*/
+
+def zad2a(list:List[String]) : String = {
+  var toRet:String = "";
+  
+  def rec(l:List[String], str:String, index:Int) : String = {
+    if(index == l.length - 1)
+    {
+      return str + l.apply(index);
+    }
+    
+    rec(l, str + l.apply(index) + ",", index + 1);
+  }
+  
+  rec(list, toRet, 0);
+}
+
+def zad2b(list:List[String]) : String = {
+  var toRet:String = "";
+  
+  def rec(l:List[String], str:String, index:Int) : String = {
+    if(index == 0)
+    {
+      return str + l.apply(0);
+    }
+    
+    rec(l, str + l.apply(index) + ",", index - 1);
+  }
+  
+  rec(list, toRet, list.length - 1);
+}
+
+println("zad2a: " + zad2a(listOfDayNames));
+println("zad2b: " + zad2b(listOfDayNames));
+
+/*
+3. Stwórz funkcję korzystającą z rekurencji ogonowej do zwrócenia 
+oddzielonego przecinkami stringa zawierającego elementy listy z ćwiczenia 1
+*/
+
+def zad3(list:List[String]) : String = {
+  var toRet:String = "";
+  
+  def rec(l:List[String], str:String) : String = {
+    if(l.length == 1)
+    {
+      return str + l.apply(0);
+    }
+    
+    rec(l.tail, str + l.head + ",");
+  }
+  
+  rec(list, toRet);
+}
+
+println("zad3:  " + zad3(listOfDayNames));
+
+/*
+4. Dla listy z ćwiczenia 1 napisz funkcję tworzącą w oparciu o nią stringa z 
+elementami oddzielonymi przecinkami korzystając z:
+    a. Metody foldl
+    b. Metody foldr
+    c. Metody foldl wypisując tylko dni z nazwami zaczynającymi się na „P”
+*/
+
+def zad4a(list:List[String]) : String = {
+  val toRet = list.foldLeft("")((m, n) => m + n + "," )
+  return toRet.dropRight(1);
+}
+def zad4b(list:List[String]) : String = {
+  val toRet = list.foldRight("")((m, n) => "," + m + n)
+  return toRet.drop(1);
+}
+def zad4c(list:List[String]) : String = {
+  val toRet = list.foldLeft("")((m, n) => if(n.charAt(0) == 'P'){ m + n + ","}else{m + ""} )
+  return toRet.dropRight(1);
+}
+
+println("zad4a: " + zad4a(listOfDayNames));
+println("zad4b: " + zad4b(listOfDayNames));
+println("zad4c: " + zad4c(listOfDayNames));
+
+/*
+5. Stwórz mapę z nazwami produktów i cenami. Na jej podstawie wygeneruj drugą, z 10% obniżką cen. 
+Wykorzystaj mechanizm mapowania kolekcji.
+*/
+
+var mapOfProductName = Map("Miś"->10.0, "Ul"->15.0, "Baton"->9.0, "Klucz"->21.0)
+
+def zad5(map:Map[String, Double]) : Map[String, Double] = {
+  val toRet = map.map(pair => (pair._1, pair._2 - (pair._2*0.10)))
+  return toRet;
+}
+
+println("zad5:  " + zad5(mapOfProductName));
+
+/*
+6. Zdefiniuj funkcję przyjmującą krotkę z 3 wartościami różnych typów i wypisującą je
+*/
+
+var tup = Tuple3(3, "Miś", 10.0)
+
+def zad6(tuple:Tuple3[Int, String, Double]) : Unit = {
+  println("1:" + tuple._1.toString() + " 2:" + tuple._2 + " 3:" + tuple._3.toString())
+}
+
+print("zad6:  "); zad6(tup);
+
+/*
+7. Zaprezentuj działanie Option na dowolnym przykładzie (np. mapy, w której wyszukujemy wartości po kluczu)
+*/
+
+def zad7(map:Map[String, Double]) : Double = {
+  val toRet = map.getOrElse("Miś", 0.0);
+  return toRet;
+}
+
+println("zad7:  " + zad7(mapOfProductName));
+
+/*
+8. Napisz funkcję usuwającą zera z listy wartości całkowitych (tzn. zwracającą listę elementów
+mających wartości różne od 0).  Wykorzystaj rekurencję. 
+*/
+
+val listOfNumbers = List(0, 0, 1, 0, 30, 5, 6, 0)
+
+def zad8(list:List[Int]) : List[Int] = {
+  var toRet:List[Int] = Nil;
+  
+  def rec(src:List[Int], in:List[Int], index:Int) : List[Int] = {
+    if(index == src.length - 1 && src.apply(index) == 0)
+    {
+      return in;
+    }
+    else if(index == src.length - 1)
+    {
+      return in :+ src.apply(index);
+    }
+    else if(src.apply(index) == 0)
+    {
+      rec(src, in, index + 1);
+    }
+    else
+    {
+      rec(src, in :+ src.apply(index), index + 1);
+    }
+  }
+  
+  rec(list, toRet, 0);
+}
+
+println("zad8:  " + zad8(listOfNumbers));
+
+/*
+9. Zdefiniuj funkcję, przyjmującą listę liczb całkowitych i zwracającą wygenerowaną na jej 
+podstawie listę, w której wszystkie liczby zostały zwiększone o 1. Wykorzystaj mechanizm 
+mapowania kolekcji.
+*/
+
+def zad9(list:List[Int]) : List[Int] = {
+  var toRet:List[Int] = list.map(x => x + 1);
+  return toRet;
+}
+
+println("zad9:  " + zad9(listOfNumbers));
+
+
+/*
+10. Stwórz funkcję przyjmującą listę liczb rzeczywistych i zwracającą stworzoną na jej 
+podstawie listę zawierającą wartości bezwzględne elementów z oryginalnej listy należących 
+do przedziału <-5,12>. Wykorzystaj filtrowanie.
+*/
+
+val listOfDouble = List(-8.0, -6.0, -4.0, -2.0, 0.0, 3.0, 6.0, 9.0, 12.0, 15.0, 18.0)
+
+import scala.language.postfixOps
+
+def zad10(list:List[Double]) : List[Double] = {
+  var toRet:List[Double] = list.filter(x => x >= -5.0 && x <= 12.0).map(x => x abs);
+  return toRet;
+}
+
+println("zad10: " + zad10(listOfDouble));
+
+
