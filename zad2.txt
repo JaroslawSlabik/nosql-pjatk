@@ -1,0 +1,168 @@
+
+/*
+ZAD1
+Wykorzystaj Pattern Matching w funkcji przyjmującej parametr typu String. Dla stringów odpowiadających nazwom dni tygodnia
+funkcja ma zwrócić „Praca” i „Weekend” (odpowiednio dla dni roboczych i wolnych), dla pozostałych napisów „Nie ma takiego dnia.
+*/
+def zad1(str:String) : String =
+{
+  str.toLowerCase() match
+  {
+    case str if str == "poniedziałek" || str == "wtorek" || str == "środa" || str == "czwartek" || str == "piątek"   => "Praca"
+    case str if str == "sobota" || str == "niedziela" => "Weekend"
+    case _ => "Nie ma takiego dnia"
+  }
+}
+
+println("zad1: " + zad1("sss"));
+
+/*
+ZAD 2
+Zdefiniuj klasę KontoBankowe z metodami wplata i wyplata oraz własnością stanKonta - własność ma być tylko do odczytu. 
+Klasa powinna udostępniać konstruktor przyjmujący początkowy stan konta oraz drugi, ustawiający początkowy stan konta na 0.
+*/
+class KontoBankowe
+{
+  private var m_stanKonta:Double = 0.0
+
+  def stanKonta = m_stanKonta
+
+  def this(stan:Double) {
+    this()
+    this.m_stanKonta = stan
+  }
+
+  def wplata(kwota:Double) : Unit =
+  {
+    if(kwota > 0.0)
+      this.m_stanKonta += kwota
+  }
+
+  def wyplata(kwota:Double) : Unit =
+  {
+    if(kwota<=m_stanKonta)
+    {
+      this.m_stanKonta -= kwota
+    }
+  }
+}
+
+var konto = new KontoBankowe();
+println("zad2: " + konto.stanKonta)
+konto.wplata(20.0)
+println("zad2: " + konto.stanKonta)
+konto.wyplata(10.0)
+println("zad2: " + konto.stanKonta)
+
+var konto2 = new KontoBankowe(300.0);
+println("zad2: " + konto2.stanKonta)
+
+/*
+ZAD 3
+Zdefiniuj klasę Osoba z własnościami imie i nazwisko. Stwórz kilka instancji tej klasy. Zdefiniuj funkcję, która przyjmuje
+obiekt klasy osoba i przy pomocy Pattern Matching wybiera i zwraca napis zawierający przywitanie danej osoby. Zdefiniuj 2-3 
+różne przywitania dla konkretnych osób (z określonym imionami lub nazwiskami) oraz jedno domyślne. 
+*/
+case class Osoba(val imie:String, val nazwisko:String){}
+
+val listaOsob = List(
+new Osoba("Ktosiek", "Ktosiński"),
+new Osoba("Jan", "Niezbędny"),
+new Osoba("Jarek", "Mazur"),
+new Osoba("Jarek", "Grat"),
+new Osoba("Kamil", "Grabowski"),
+new Osoba("Anna", "Grabowska")
+)
+
+def zad3(osoba:Osoba):String =
+{
+  osoba match
+  {
+    case Osoba("Ktosiek", "Ktosiński") => "Witaj Ktosiek, panna Ktosińska już na Ciebie czeka"
+    case Osoba("Jan", "Niezbędny") => "Witaj Janie!"
+    case Osoba("Jarek", nazwisko) => s"Witam Cię Jarek $nazwisko!"
+    case Osoba(imie, "Grabowski") => s"Witam Cię Panie $imie Grabowski!"
+    case Osoba(imie, "Grabowska") => s"Witam Cię Panno $imie Grabowska!"
+    case Osoba(imie, nazwisko) => s"$imie $nazwisko przybył!"
+    case _ => "Dzień dobry"
+  }
+}
+
+for (osoba <- listaOsob)
+  println("zad3: " + zad3(osoba))
+
+/*
+ZAD 4
+Zdefiniuj funkcję przyjmującą dwa parametry - wartość całkowitą i funkcję operującą na wartości całkowitej. Zastosuj przekazaną
+jako parametr funkcję trzykrotnie do wartości całkowitej i zwróć wynik.
+*/
+def zad4(value:Int, fun:Int=>Int, it:Int):Int =
+{
+  if(it == 0)
+    return value
+  else
+    zad4(fun(value), fun, it - 1)
+}
+
+println("zad4: " + zad4(2, (x:Int)=>x  * 4, 3))
+
+
+/*
+ZAD 5
+Zdefiniuj klasę Osoba i trzy traity: Student, Nauczyciel, Pracownik. Osoba powinna mieć własności read only: imie, nazwisko,
+podatek. Pracownik powinien mieć własność pensja (z getterem i seterem). Student i Pracownik powinni przesłaniać własność
+podatek – dla Studenta zwracamy 0, dla Pracownika 20% pensji. Nauczyciel powinien dziedziczyć z Pracownika, dla niego podatek
+zwraca 10% pensji. Stwórz obiekty z każdym z traitów, pokaż jak podatek działa dla każdego z nich. Stwórz obiekty z traitami
+Student i Pracownik, pokaż jak podatek zadziała w zależności od kolejności w jakiej te traity zostały dodane przy tworzeniu obiektu.
+*/
+abstract class Czlowiek(val imie:String, val nazwisko:String)
+{
+  protected val m_podatek:Double
+
+  def podatek = m_podatek //Getter
+}
+
+trait Pracownik extends Czlowiek
+{
+  protected var m_pensja:Double = 0.0
+  override protected val m_podatek:Double = 0.2
+
+  def pensja = m_pensja //Getter
+  def pensja_= (value:Double):Unit = {m_pensja = value}  //Setter
+
+  override def podatek = m_podatek * m_pensja  //Getter
+}
+
+trait Student extends Czlowiek
+{
+  override protected val m_podatek:Double = 0.0
+}
+
+trait Nauczyciel extends Pracownik
+{
+  override protected val m_podatek:Double = 0.1
+}
+
+var student = new Czlowiek("student","student") with Student
+var pracownik = new Czlowiek("pracownik","pracownik") with Pracownik
+var nauczyciel = new Czlowiek("nauczyciel","nauczyciel") with Nauczyciel
+var pracujacyStudent = new Czlowiek("pracujacyStudent","pracujacyStudent") with Student with Pracownik
+var studentPracujacy = new Czlowiek("studentPracujacy","studentPracujacy") with Pracownik with Student
+
+
+println("zad5 - "+ student.imie +": " + student.podatek)
+println("zad5 - "+ pracownik.imie +": " + pracownik.podatek)
+pracownik.pensja = 2000.0
+println("zad5 - "+ pracownik.imie +" 2tys: " + pracownik.podatek)
+println("zad5 - "+ nauczyciel.imie +": " + nauczyciel.podatek)
+nauczyciel.pensja = 2000.0
+println("zad5 - "+ nauczyciel.imie +" 2tys: " + nauczyciel.podatek)
+println("zad5 - "+ pracujacyStudent.imie +": " + pracujacyStudent.podatek)
+pracujacyStudent.pensja = 2000.0
+println("zad5 - "+ pracujacyStudent.imie +" 2tys: " + pracujacyStudent.podatek)
+println("zad5 - "+ studentPracujacy.imie +": " + studentPracujacy.podatek)
+studentPracujacy.pensja = 2000.0
+println("zad5 - "+ studentPracujacy.imie +" 2tys: " + studentPracujacy.podatek)
+
+
+
