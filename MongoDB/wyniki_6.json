@@ -1,0 +1,33 @@
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017/nbd
+MongoDB server version: 4.2.5
+WARNING: shell and server versions do not match
+{ "nInserted" : 1 }
+{
+	"_id" : ObjectId("5e989ee4e8b498086b51869a"),
+	"sex" : "Male",
+	"first_name" : "Jarosław",
+	"last_name" : "Słabik",
+	"job" : "programista",
+	"email" : "s20833@pjwstk.edu.pl",
+	"location" : {
+		"city" : "Warszawa",
+		"address" : {
+			"streetname" : "Kamienia",
+			"streetnumber" : "20"
+		}
+	},
+	"description" : "NULL",
+	"height" : "180.00",
+	"weight" : "90.00",
+	"birth_date" : "1995-01-18T18:00:00Z",
+	"nationality" : "Poland",
+	"credit" : [
+		{
+			"type" : "diners-club-carte-blanche",
+			"number" : "6475706164757061",
+			"currency" : "PLN",
+			"balance" : "-1000000"
+		}
+	]
+}
