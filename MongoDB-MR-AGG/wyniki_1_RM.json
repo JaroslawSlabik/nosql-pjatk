@@ -1,0 +1,30 @@
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017/nbd
+MongoDB server version: 3.6.3
+{
+	"result" : "map_reduce_1",
+	"timeMillis" : 137,
+	"counts" : {
+		"input" : 10000,
+		"emit" : 10000,
+		"reduce" : 200,
+		"output" : 2
+	},
+	"ok" : 1
+}
+[
+	{
+		"_id" : "Female",
+		"value" : {
+			"height" : 167.12617499498307,
+			"weight" : 70.11384105960272
+		}
+	},
+	{
+		"_id" : "Male",
+		"value" : {
+			"height" : 167.08008172214485,
+			"weight" : 70.00180785329881
+		}
+	}
+]
