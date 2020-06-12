@@ -1,0 +1,264 @@
+﻿[
+  {
+    "scenarzysta": {
+      "identity": 45,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Cameron Crowe",
+        "born": 1957
+      }
+    },
+    "film": {
+      "identity": 37,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Jerry Maguire",
+        "tagline": "The rest of his life begins now.",
+        "released": 2000
+      }
+    },
+    "rezyser": {
+      "identity": 45,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Cameron Crowe",
+        "born": 1957
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 6,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Lana Wachowski",
+        "born": 1965
+      }
+    },
+    "film": {
+      "identity": 119,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Speed Racer",
+        "tagline": "Speed has no limits",
+        "released": 2008
+      }
+    },
+    "rezyser": {
+      "identity": 6,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Lana Wachowski",
+        "born": 1965
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 5,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Andy Wachowski",
+        "born": 1967
+      }
+    },
+    "film": {
+      "identity": 119,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Speed Racer",
+        "tagline": "Speed has no limits",
+        "released": 2008
+      }
+    },
+    "rezyser": {
+      "identity": 5,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Andy Wachowski",
+        "born": 1967
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 154,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Nancy Meyers",
+        "born": 1949
+      }
+    },
+    "film": {
+      "identity": 152,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Something's Gotta Give",
+        "released": 2003
+      }
+    },
+    "rezyser": {
+      "identity": 154,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Nancy Meyers",
+        "born": 1949
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 214,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Cameron Crowe",
+        "born": 1957
+      }
+    },
+    "film": {
+      "identity": 206,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Jerry Maguire",
+        "tagline": "The rest of his life begins now.",
+        "released": 2000
+      }
+    },
+    "rezyser": {
+      "identity": 214,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Cameron Crowe",
+        "born": 1957
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 175,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Lana Wachowski",
+        "born": 1965
+      }
+    },
+    "film": {
+      "identity": 288,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Speed Racer",
+        "tagline": "Speed has no limits",
+        "released": 2008
+      }
+    },
+    "rezyser": {
+      "identity": 175,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Lana Wachowski",
+        "born": 1965
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 174,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Andy Wachowski",
+        "born": 1967
+      }
+    },
+    "film": {
+      "identity": 288,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Speed Racer",
+        "tagline": "Speed has no limits",
+        "released": 2008
+      }
+    },
+    "rezyser": {
+      "identity": 174,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Andy Wachowski",
+        "born": 1967
+      }
+    }
+  },
+  {
+    "scenarzysta": {
+      "identity": 323,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Nancy Meyers",
+        "born": 1949
+      }
+    },
+    "film": {
+      "identity": 321,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "title": "Something's Gotta Give",
+        "released": 2003
+      }
+    },
+    "rezyser": {
+      "identity": 323,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "name": "Nancy Meyers",
+        "born": 1949
+      }
+    }
+  }
+]
