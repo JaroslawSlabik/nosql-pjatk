@@ -1,0 +1,7 @@
+$ python3 main.py
+Created
+b'{"name": "Jaroslaw Slabik", "age": 25, "company": "PJATK"}'
+Modified
+b'{"name": "Jaroslaw Slabik Wielki", "age": 25, "company": "PJATK v2.0"}'
+Deleted
+None
