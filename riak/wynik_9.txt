@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvr/8Z44URCiRMY+V4Xx31A2+LAA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </riak/s20833>; rel="up"
+Last-Modified: Sun, 14 Jun 2020 11:53:51 GMT
+ETag: "1FLad1VjwrVgxQMEOO7SMW"
+Date: Sun, 14 Jun 2020 11:56:24 GMT
+Content-Type: application/json
+Content-Length: 24
+
+{"wygrana_w_lotto" : -1}

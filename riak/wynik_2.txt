@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvr/8y6gQIpTInMfKYNgSdYMvCwA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s20833>; rel="up"
+Last-Modified: Sun, 14 Jun 2020 11:21:21 GMT
+ETag: "H3wIHW5TUddTtYMAuwqyS"
+Date: Sun, 14 Jun 2020 11:23:48 GMT
+Content-Type: application/json
+Content-Length: 62
+
+{"name": "Jarek", "surname": "Slabik", "age":25, "weight":180}

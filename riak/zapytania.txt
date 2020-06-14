@@ -1,0 +1,46 @@
+//1.
+//Umieść w bazie (nazwa bucketa ma być Twoim numerem indeksu poprzedzonym literą „s”) 5 wartości, gdzie każda z nich ma być dokumentem json mającym 4 pola co najmniej dwóch różnych typów.
+curl -i -X POST -H "Content-Type: application/json" -d '{"name" : "Jarek", "surname" : "Slabik", "age": 25, "weight" : 180}'  http://localhost:8098/buckets/s20833/keys/Jarek
+curl -i -X POST -H "Content-Type: application/json" -d '{"name" : "Darek", "surname" : "Długi", "age" : 24, "weight" : 150}'  http://localhost:8098/buckets/s20833/keys/Darek
+curl -i -X POST -H "Content-Type: application/json" -d '{"name" : "Marek", "surname" : "Morzonki", "age" : 23, "weight" : 160}'  http://localhost:8098/buckets/s20833/keys/Marek
+curl -i -X POST -H "Content-Type: application/json" -d '{"name" : "Radek", "surname" : "Kartecki", "age" : 22, "weight" : 170}'  http://localhost:8098/buckets/s20833/keys/Radek
+curl -i -X POST -H "Content-Type: application/json" -d '{"name" : "Arek", "surname" : "Defaultecki", "age" : 21, "weight" : 180}'  http://localhost:8098/buckets/s20833/keys/Arek
+
+//2.
+//Pobierz z bazy jedną z dodanych przez Ciebie wartości.
+curl -i -X GET http://localhost:8098/buckets/s20833/keys/Jarek
+
+//3.
+//Zmodyfikuj jedną z wartości – dodając dodatkowe pole do dokumentu.
+curl -i -X PUT -H "Content-Type: application/json" -d '{"name" : "Jarek", "surname" : "Slabik", "age" : 25, "weight" : 180, "sex" : "M"}'  http://localhost:8098/riak/s20833/Jarek
+curl -i -X GET http://localhost:8098/buckets/s20833/keys/Jarek
+
+//4.
+//Zmodyfikuj jedną z wartości – usuwając jedną pole z wybranego dokumentu.
+curl -i -X PUT -H "Content-Type: application/json" -d '{"name" : "Jarek", "surname" : "Slabik", "weight" :180, "sex" : "M"}'  http://localhost:8098/riak/s20833/Jarek
+curl -i -X GET http://localhost:8098/buckets/s20833/keys/Jarek
+
+//5.
+//Zmodyfikuj jedną z wartości – zmieniając wartość jednego z pól.
+curl -i -X PUT -H "Content-Type: application/json" -d '{"name" : "Jarek", "surname" : "Slabik", "weight" : 222, "sex" : "M"}'  http://localhost:8098/riak/s20833/Jarek
+curl -i -X GET http://localhost:8098/buckets/s20833/keys/Jarek
+
+//6.
+//Usuń jeden z dokumentów z bazy.
+curl -i -X DELETE http://localhost:8098/riak/s20833/keys/Arek
+
+//7.
+Spróbuj pobrać z bazy wartość, która nie istnieje w tej bazie.
+curl -i -X GET http://localhost:8098/riak/s20833/nie_istniejacy
+
+//8.
+//Dodaj do bazy 1 dokument json (zawierający 1 pole), ale nie specyfikuj klucza.
+curl -i -X POST -H "Content-Type: application/json" -d '{"wygrana_w_lotto" : -1}'  http://localhost:8098/riak/s20833
+
+//9.
+//Pobierz z bazy element z zadania 8.
+curl -i -X GET http://localhost:8098/riak/s20833/aDOcvcwnZbGbty99m8STpm1IPsa
+
+//10.
+//Usuń z bazy element z zadania 8.
+curl -i -X DELETE http://localhost:8098/riak/s20833/aDOcvcwnZbGbty99m8STpm1IPsa

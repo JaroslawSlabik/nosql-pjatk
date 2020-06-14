@@ -1,0 +1,8 @@
+HTTP/1.1 405 Method Not Allowed
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 14 Jun 2020 11:45:21 GMT
+Content-Type: text/html
+Content-Length: 177
+Allow: GET, HEAD, POST
+
+<html><head><title>405 Method Not Allowed</title></head><body><h1>Method Not Allowed</h1>Method Not Allowed<p><hr><address>mochiweb+webmachine web server</address></body></html>

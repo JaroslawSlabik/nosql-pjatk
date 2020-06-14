@@ -1,0 +1,20 @@
+HTTP/1.1 204 No Content
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Date: Sun, 14 Jun 2020 11:39:13 GMT
+Content-Type: application/json
+Content-Length: 0
+
+
+HTTP/1.1 200 OK
+X-Riak-Vclock: a85hYGBgzGDKBVI8+xkWvr/8y6gQIpTIlsfKkNgRdYMvCwA=
+Vary: Accept-Encoding
+Server: MochiWeb/1.1 WebMachine/1.10.9 (cafe not found)
+Link: </buckets/s20833>; rel="up"
+Last-Modified: Sun, 14 Jun 2020 11:39:13 GMT
+ETag: "z7sSrY9Pe61S5iKTo4S3E"
+Date: Sun, 14 Jun 2020 11:39:24 GMT
+Content-Type: application/json
+Content-Length: 75
+
+{"name": "Jarek", "surname": "Slabik", "age":25, "weight":180, "sex" : "M"}
