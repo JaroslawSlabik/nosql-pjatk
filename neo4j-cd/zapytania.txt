@@ -1,0 +1,33 @@
+//1.
+//Znajdź trasy którymi można dostać się z Darjeeling na Sandakphu, mające najmniejszą ilość etapów
+MATCH shortestPaths=shortestPath((:town{name : "Darjeeling"})-[*]->(:peak{name : 'Sandakphu'})) RETURN shortestPaths
+
+//2.
+//Znajdź mające najmniej etapów trasy którymi można dostać się z Darjeeling na Sandakphu i które mogą być wykorzystywane zimą
+MATCH shortestPathsWinter=shortestPath((:town{name:"Darjeeling"})-[*]->(:peak{name:'Sandakphu'})) WHERE ANY(r IN RELATIONSHIPS(shortestPathsWinter) WHERE r.winter='true') RETURN shortestPathsWinter
+
+//3.
+//Uszereguj trasy którymi można dostać się z Darjeeling na Sandakphu według dystansu Znajdź wszystkie miejsca do których można dotrzeć przy pomocy roweru (twowheeler) z Darjeeling latem
+MATCH pathsTwowheelerSummer=(:town{name:"Darjeeling"})-[:twowheeler]->(:peak{name:'Sandakphu'}) WHERE ANY(r IN RELATIONSHIPS(pathsTwowheelerSummer) WHERE r.summer='true') WITH pathsTwowheelerSummer UNWIND RELATIONSHIPS(pathsTwowheelerSummer) AS rp RETURN DISTINCT pathsTwowheelerSummer, sum(rp.distance) AS d ORDER BY d ASC
+//Brak dróg którymi można przejechać z Darjeeling do Sandakphu dwukołowcem w lato
+
+//4.
+//Uszereguj porty lotnicze według ilości rozpoczynających się w nich lotów
+MATCH (a:Airport)<-[:ORIGIN]-(f:Flight) RETURN a, count(f) AS departure ORDER BY departure ASC
+
+//5.
+//Znajdź wszystkie porty lotnicze, do których da się dolecieć (bezpośrednio lub z przesiadkami) z Los Angeles (LAX) wydając mniej niż 3000
+
+//6.
+
+
+//7.
+
+
+//8.
+
+
+//9.
+
+
+//10.
